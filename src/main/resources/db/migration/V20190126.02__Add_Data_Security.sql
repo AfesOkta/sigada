@@ -1,41 +1,15 @@
-CREATE TABLE c_password_reset_token (
-    id character varying(255) NOT NULL,
-    expiry_date timestamp without time zone,
-    token character varying(255) NOT NULL,
-    id_user character varying(255) NOT NULL
-);
-
-CREATE TABLE c_security_permission (
-    id character varying(255) NOT NULL,
-    permission_label character varying(255) NOT NULL,
-    permission_value character varying(255) NOT NULL
-);
-
-CREATE TABLE c_security_role (
-    id character varying(255) NOT NULL,
-    description character varying(255),
-    name character varying(255) NOT NULL
-);
-
-CREATE TABLE c_security_role_permission (
-    id_role character varying(255) NOT NULL,
-    id_permission character varying(255) NOT NULL
-);
-
-CREATE TABLE c_security_user (
-    id character varying(255) NOT NULL,
-    active boolean NOT NULL,
-    user_name character varying(255) NOT NULL,
-    id_role character varying(255) NOT NULL
-);
-
-CREATE TABLE c_security_user_password (
-    id_user character varying(36) NOT NULL,
-    password character varying(255) NOT NULL
-);
-
 INSERT INTO c_security_permission (id, permission_label, permission_value) VALUES
-('USER_LOGGED_IN', 'Get User Loggin Information', 'ROLE_USER_LOGGED_IN');
+('USER_LOGGED_IN', 'Get User Loggin Information', 'ROLE_USER_LOGGED_IN'),
+('DATA_KEPEL','Get Kelompok Pelayanan Information','ROLE_KEPEL'),
+('DATA_KOMISI','Get Data Komisi','ROLE_KOMISI'),
+('DATA_WAKTU_IBADAH','Get Waktu Ibadah','ROLE_WAKTU_IBADAH'),
+('DATA_KEUANGAN','Get Data Keuangan','ROLE_KEUANGAN'),
+('DATA_IDENTITAS_SIDANG','Get Identitas Sidang','ROLE_IDENTITAS_SIDANG'),
+('DATA_JEMAAT','Get Data Jemaat','ROLE_Jemaat'),
+('DATA_MUTASI_JEMAAT','Get Data Mutasi Jemaat','ROLE_MUTASI_JEMAAT'),
+('DATA_ORGANISASI','Get Data Organisasi','ROLE_ORGANISASI'),
+('DATA_PENJADWALAN','Get Data Penjadwalan','ROLE_PENJADWALAN'),
+('DATA_TRANSAKSI_KEUANGAN','Transaksi Data Keuangan','ROLE_TRANSAKSI_KEUANGAN');
 
 INSERT INTO c_security_role (id, description, name) VALUES
 ('ADMINISTRATOR', 'Application Administrator', 'ADMINISTRATOR'),
