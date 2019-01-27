@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,12 +20,15 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Afes
  */
 @Entity
+@Data
 @Table(name = "rpjmt")
 @XmlRootElement
 @NamedQueries({
@@ -47,6 +51,10 @@ public class RpJmt implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "uuid" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 8)
@@ -83,149 +91,5 @@ public class RpJmt implements Serializable {
     private Character jmhub;
     @Column(name = "jmjkl")
     private Character jmjkl;
-
-    public RpJmt() {
-    }
-
-    public RpJmt(String jmkod) {
-        this.jmkod = jmkod;
-    }
-
-    public String getJmkod() {
-        return jmkod;
-    }
-
-    public void setJmkod(String jmkod) {
-        this.jmkod = jmkod;
-    }
-
-    public String getJmnam() {
-        return jmnam;
-    }
-
-    public void setJmnam(String jmnam) {
-        this.jmnam = jmnam;
-    }
-
-    public String getKlkod() {
-        return klkod;
-    }
-
-    public void setKlkod(String klkod) {
-        this.klkod = klkod;
-    }
-
-    public String getKpkod() {
-        return kpkod;
-    }
-
-    public void setKpkod(String kpkod) {
-        this.kpkod = kpkod;
-    }
-
-    public Date getJmtgl() {
-        return jmtgl;
-    }
-
-    public void setJmtgl(Date jmtgl) {
-        this.jmtgl = jmtgl;
-    }
-
-    public String getJmhut() {
-        return jmhut;
-    }
-
-    public void setJmhut(String jmhut) {
-        this.jmhut = jmhut;
-    }
-
-    public Boolean getJmbpt() {
-        return jmbpt;
-    }
-
-    public void setJmbpt(Boolean jmbpt) {
-        this.jmbpt = jmbpt;
-    }
-
-    public Boolean getJmsid() {
-        return jmsid;
-    }
-
-    public void setJmsid(Boolean jmsid) {
-        this.jmsid = jmsid;
-    }
-
-    public Character getJmnkh() {
-        return jmnkh;
-    }
-
-    public void setJmnkh(Character jmnkh) {
-        this.jmnkh = jmnkh;
-    }
-
-    public Character getJmkrj() {
-        return jmkrj;
-    }
-
-    public void setJmkrj(Character jmkrj) {
-        this.jmkrj = jmkrj;
-    }
-
-    public Character getJmpdk() {
-        return jmpdk;
-    }
-
-    public void setJmpdk(Character jmpdk) {
-        this.jmpdk = jmpdk;
-    }
-
-    public Character getKmkod() {
-        return kmkod;
-    }
-
-    public void setKmkod(Character kmkod) {
-        this.kmkod = kmkod;
-    }
-
-    public Character getJmhub() {
-        return jmhub;
-    }
-
-    public void setJmhub(Character jmhub) {
-        this.jmhub = jmhub;
-    }
-
-    public Character getJmjkl() {
-        return jmjkl;
-    }
-
-    public void setJmjkl(Character jmjkl) {
-        this.jmjkl = jmjkl;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (jmkod != null ? jmkod.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RpJmt)) {
-            return false;
-        }
-        RpJmt other = (RpJmt) object;
-        if ((this.jmkod == null && other.jmkod != null) || (this.jmkod != null && !this.jmkod.equals(other.jmkod))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RpJmt[ jmkod=" + jmkod + " ]";
-    }
     
 }

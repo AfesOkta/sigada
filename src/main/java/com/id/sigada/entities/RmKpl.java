@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -16,12 +17,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Afes
  */
 @Entity
+@Data
 @Table(name = "rmkpl")
 @XmlRootElement
 @NamedQueries({
@@ -34,6 +38,10 @@ public class RmKpl implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "uuid" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2)
@@ -48,69 +56,5 @@ public class RmKpl implements Serializable {
     @Size(max = 8)
     @Column(name = "kpdkn")
     private String kpdkn;
-
-    public RmKpl() {
-    }
-
-    public RmKpl(String kpkod) {
-        this.kpkod = kpkod;
-    }
-
-    public String getKpkod() {
-        return kpkod;
-    }
-
-    public void setKpkod(String kpkod) {
-        this.kpkod = kpkod;
-    }
-
-    public String getKpnam() {
-        return kpnam;
-    }
-
-    public void setKpnam(String kpnam) {
-        this.kpnam = kpnam;
-    }
-
-    public String getKppnt() {
-        return kppnt;
-    }
-
-    public void setKppnt(String kppnt) {
-        this.kppnt = kppnt;
-    }
-
-    public String getKpdkn() {
-        return kpdkn;
-    }
-
-    public void setKpdkn(String kpdkn) {
-        this.kpdkn = kpdkn;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (kpkod != null ? kpkod.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RmKpl)) {
-            return false;
-        }
-        RmKpl other = (RmKpl) object;
-        if ((this.kpkod == null && other.kpkod != null) || (this.kpkod != null && !this.kpkod.equals(other.kpkod))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RmKpl[ kpkod=" + kpkod + " ]";
-    }
     
 }

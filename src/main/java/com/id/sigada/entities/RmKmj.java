@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,6 +20,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -26,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "rmkmj")
+@Data
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "RmKmj.findAll", query = "SELECT r FROM RmKmj r")
@@ -39,6 +43,10 @@ public class RmKmj implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "uuid" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 9)
@@ -59,84 +67,5 @@ public class RmKmj implements Serializable {
     @Column(name = "kmakt")
     private Boolean kmakt;
 
-    public RmKmj() {
-    }
-
-    public RmKmj(String kmprd) {
-        this.kmprd = kmprd;
-    }
-
-    public String getKmprd() {
-        return kmprd;
-    }
-
-    public void setKmprd(String kmprd) {
-        this.kmprd = kmprd;
-    }
-
-    public String getKmkod() {
-        return kmkod;
-    }
-
-    public void setKmkod(String kmkod) {
-        this.kmkod = kmkod;
-    }
-
-    public Date getKmtgl() {
-        return kmtgl;
-    }
-
-    public void setKmtgl(Date kmtgl) {
-        this.kmtgl = kmtgl;
-    }
-
-    public String getJmkod() {
-        return jmkod;
-    }
-
-    public void setJmkod(String jmkod) {
-        this.jmkod = jmkod;
-    }
-
-    public Date getKmtgs() {
-        return kmtgs;
-    }
-
-    public void setKmtgs(Date kmtgs) {
-        this.kmtgs = kmtgs;
-    }
-
-    public Boolean getKmakt() {
-        return kmakt;
-    }
-
-    public void setKmakt(Boolean kmakt) {
-        this.kmakt = kmakt;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (kmprd != null ? kmprd.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RmKmj)) {
-            return false;
-        }
-        RmKmj other = (RmKmj) object;
-        if ((this.kmprd == null && other.kmprd != null) || (this.kmprd != null && !this.kmprd.equals(other.kmprd))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RmKmj[ kmprd=" + kmprd + " ]";
-    }
     
 }

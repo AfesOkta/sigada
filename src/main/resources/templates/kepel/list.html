@@ -1,0 +1,84 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <title>Daftar Kartu</title>
+        <style>
+            .noWrapColumn{
+                white-space: nowrap !important;
+            }
+        </style>
+    </head>
+    <section layout:fragment="breadcrumb">
+        <h1>Daftar Kelompok Pelayanan</h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Daftar Kelompok Pelayanan</li>
+        </ol>	
+    </section>
+    <section layout:fragment="content">	
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <a th:href="@{/kepel/form}" class="btn btn-primary" role="button" aria-pressed="true">Tambah [F3]</a>
+                                </td>
+                                <td align="right">
+                                    <form method="get" th:action="@{/kepel/list}">
+                                        <div class="title_right">
+                                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                                <div class="input-group">
+                                                    <input type="text" name="search"
+                                                        placeholder="Search for..." class="form-control" th:value="${search}">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="submit">Search</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                         </table>                        
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th class="noWrapColumn" width="20%">Kode</th>
+                                    <th class="noWrapColumn" width="70%">Nama Pelayanan</th>
+                                    <th class="noWrapColumn text-center">&nbsp;</th>
+                                </tr>
+                                <tr th:each="st,iter : ${kepel.content}">
+                                    <td class="noWrapColumn" th:text="${st.kpkod}">Kode</td>
+                                    <td class="noWrapColumn" th:text="${st.kpnam}">Nama Kartu</td>
+                                    <td class="noWrapColumn text-center">
+                                        <a href="#" class="btn btn-info" th:href="@{/kepel/form(id=${st.id})}" title="edit kepel"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-info" th:href="@{/kepel/delete(id=${st.id})}" title="delete kepel"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:if="${not #lists.isEmpty(kepel.content)}">
+                        <br/>
+                        <div class="text-center"> 
+                            <nav>
+                                <ul class="pagination" sd:pagination="full">
+                                    <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+                                    <li class="disabled"><a th:href="@{/kepel/list}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <li class="active"><a th:href="@{/kepel/list}">1 <span class="sr-only">(current)</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>		
+            </div>
+        </div>
+    </section>
+    
+</html>

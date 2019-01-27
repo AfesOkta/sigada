@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -23,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "rmkms")
+@Data
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "RmKms.findAll", query = "SELECT r FROM RmKms r")
@@ -30,9 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RmKms.findByKmnam", query = "SELECT r FROM RmKms r WHERE r.kmnam = :kmnam")
     , @NamedQuery(name = "RmKms.findByKmsng", query = "SELECT r FROM RmKms r WHERE r.kmsng = :kmsng")})
 public class RmKms implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "uuid" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2)
@@ -45,60 +51,6 @@ public class RmKms implements Serializable {
     @Column(name = "kmsng")
     private String kmsng;
 
-    public RmKms() {
-    }
-
-    public RmKms(String kmkod) {
-        this.kmkod = kmkod;
-    }
-
-    public String getKmkod() {
-        return kmkod;
-    }
-
-    public void setKmkod(String kmkod) {
-        this.kmkod = kmkod;
-    }
-
-    public String getKmnam() {
-        return kmnam;
-    }
-
-    public void setKmnam(String kmnam) {
-        this.kmnam = kmnam;
-    }
-
-    public String getKmsng() {
-        return kmsng;
-    }
-
-    public void setKmsng(String kmsng) {
-        this.kmsng = kmsng;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (kmkod != null ? kmkod.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RmKms)) {
-            return false;
-        }
-        RmKms other = (RmKms) object;
-        if ((this.kmkod == null && other.kmkod != null) || (this.kmkod != null && !this.kmkod.equals(other.kmkod))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RmKms[ kmkod=" + kmkod + " ]";
-    }
+    
     
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kartu</title>
+
+
+    </head>
+    <section layout:fragment="breadcrumb">
+        <h1>Tambah Pelayanan</h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a th:href="@{/kepel/list}">Daftar Kartu</a></li>
+            <li class="active">Tambah Pelayanan</li>
+        </ol>	
+    </section>
+
+    <section layout:fragment="content" class="container">
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Form<small>&nbsp;Insert & Update Pelayanan
+                        </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <form method="post" th:action="@{/kepel/form}" th:object="${kepel}">
+                        
+                        <div class="form-group">
+                            <label>kode Pelayanan</label>
+                            <input type="text" th:field="*{kpkod}" class="form-control" name="kpkod" placeholder="Kode Pelayanan">
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Pelayanan</label>
+                            <input type="text" th:field="*{kpnam}" class="form-control" name="kpnam" placeholder="Nama Pelayanan">
+                        </div>
+                        
+
+                        <input type="hidden" name="id" th:field="*{id}">
+
+                        <div class="form-group">
+
+                            <input class="btn btn-primary" type="submit" value="Save">
+                            <a th:href="@{/kepel/list}" class="btn btn-primary" role="button">
+                                <span aria-hidden="true"></span>Cancel
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</html>

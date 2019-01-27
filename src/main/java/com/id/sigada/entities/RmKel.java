@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -23,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "rmkel")
+@Data
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "RmKel.findAll", query = "SELECT r FROM RmKel r")
@@ -34,6 +38,10 @@ public class RmKel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "uuid" )
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 4)
@@ -48,69 +56,5 @@ public class RmKel implements Serializable {
     @Size(max = 2)
     @Column(name = "kpkod")
     private String kpkod;
-
-    public RmKel() {
-    }
-
-    public RmKel(String klkod) {
-        this.klkod = klkod;
-    }
-
-    public String getKlkod() {
-        return klkod;
-    }
-
-    public void setKlkod(String klkod) {
-        this.klkod = klkod;
-    }
-
-    public String getKlnam() {
-        return klnam;
-    }
-
-    public void setKlnam(String klnam) {
-        this.klnam = klnam;
-    }
-
-    public String getKlkkk() {
-        return klkkk;
-    }
-
-    public void setKlkkk(String klkkk) {
-        this.klkkk = klkkk;
-    }
-
-    public String getKpkod() {
-        return kpkod;
-    }
-
-    public void setKpkod(String kpkod) {
-        this.kpkod = kpkod;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (klkod != null ? klkod.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RmKel)) {
-            return false;
-        }
-        RmKel other = (RmKel) object;
-        if ((this.klkod == null && other.klkod != null) || (this.klkod != null && !this.klkod.equals(other.klkod))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RmKel[ klkod=" + klkod + " ]";
-    }
     
 }
