@@ -4,7 +4,7 @@
       layout:decorate="~{layout}">
     <head>
         <meta charset="UTF-8">
-        <title>Komisi</title>
+        <title>Daftar Komisi</title>
 
 
     </head>
@@ -12,7 +12,7 @@
         <h1>Tambah Komisi</h1>
         <ol class="breadcrumb">
             <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a th:href="@{/kepel/list}">Daftar Komisi-Komisi</a></li>
+            <li><a th:href="@{/komisi/list}">Daftar Komisi</a></li>
             <li class="active">Tambah Komisi</li>
         </ol>	
     </section>
@@ -29,33 +29,28 @@
 
                 <div class="x_content">
 
-                    <form method="post" th:action="@{/kepel/form}" th:object="${kepel}">
+                    <form method="post" th:action="@{/komisi/form}" th:object="${komisi}">
                         
                         <div class="form-group">
-                            <label>kode Pelayanan</label>
-                            <input type="text" th:field="*{kpkod}" class="form-control" name="kpkod" placeholder="Kode Pelayanan">
+                            <label>Kode Komisi</label>
+                            <input type="text" th:field="*{kmkod}" class="form-control" name="kmkod" placeholder="Kode Komisi">
                         </div>
                         <div class="form-group">
-                            <label>Nama Pelayanan</label>
-                            <input type="text" th:field="*{kpnam}" class="form-control" name="kpnam" placeholder="Nama Pelayanan">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Penatua</label>
-                            <input type="text" th:field="*{kppnt}" class="form-control" name="kppnt" placeholder="Nama Penatua">
+                            <label>Nama Komisi</label>
+                            <input type="text" th:field="*{kmnam}" class="form-control" name="kmnam" placeholder="Nama Komisi">
                         </div>
                         
                         <div class="form-group">
-                            <label>Diaken</label>
-                            <input type="text" th:field="*{kpdkn}" class="form-control" name="kpdkn" placeholder="Diaken">
-                        </div>
+                            <label>Singkatan</label>
+                            <input type="text" th:field="*{kmsng}" class="form-control" name="kmsng" placeholder="Singkatan Komisi">
+                        </div>                                                
 
                         <input type="hidden" name="id" th:field="*{id}">
 
                         <div class="form-group">
 
                             <input class="btn btn-primary" type="submit" value="Save">
-                            <a th:href="@{/kepel/list}" class="btn btn-primary" role="button">
+                            <a th:href="@{/komisi/list}" class="btn btn-primary" role="button">
                                 <span aria-hidden="true"></span>Cancel
                             </a>
                         </div>
