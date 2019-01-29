@@ -98,11 +98,59 @@
                                 <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Pendataan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                                 <div id="subPages" class="collapse ">
                                     <ul class="nav">
-                                        <li><a th:href="@{/keluarga/list}" class="">Data Jemaat</a></li>
-                                        <li><a href="#" class="">Mutasi Jemaat</a></li>
-                                        <li><a href="#" class="">Organisasi</a></li>
-                                        <li><a href="#" class="">Penjadwalan</a></li>
-                                        <li><a href="#" class="">Keuangan</a></li>
+                                        <li><a href="#pagesJemaat" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Data Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesJemaat" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a th:href="@{/jemaat/list}" class="">Data Jemaat</a></li>
+                                                    <li><a href="#" class="">Data Kepala Keluarga</a></li>
+                                                    <li><a th:href="@{/keluarga/list}" class="">Keluarga Baru</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#pagesMutasi" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Mutasi Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesMutasi" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a href="#" class="">Pindah Kepel</a></li>
+                                                    <li><a href="#" class="">Pindah Jemaat</a></li>
+                                                    <li><a href="#" class="">Jemaat Meninggal</a></li>
+                                                    <li><a href="#" class="">Jemaat Keluar</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#pagesOrganisasi" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Organisasi</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesOrganisasi" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a href="#" class="">Badan. Pimpinan Sidang</a></li>
+                                                    <li><a href="#" class="">Pimpinan. Majelis Sidang</a></li>
+                                                    <li><a href="#" class="">Kelompok. Pelayanan/Hibah</a></li>
+                                                    <li><a href="#" class="">Komisi-Komisi</a></li>
+                                                    <li><a href="#" class="">B P P G S</a></li>
+                                                    <li><a href="#" class="">Penasehat Sidang</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#pagesJadwal" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Mutasi Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesJadwal" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a href="#" class="">Ibadah Minggu</a></li>
+                                                    <li><a href="#" class="">Ibadah Kepel</a></li>
+                                                    <li><a href="#" class="">Ibadah Komisi</a></li>
+                                                    <li><a href="#" class="">Ibadah Hari Besar</a></li>
+                                                    <li><a href="#" class="">Ibadah Syukur/Khusus</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#pagesKeuangan" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Mutasi Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesKeuangan" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a href="#" class="">Kas Harian</a></li>
+                                                    <li><a href="#" class="">Perpuluhan Jemaat</a></li>
+                                                    <li><a href="#" class="">KPersembahan</a></li>
+                                                    <li><a href="#" class="">Persembahan Syukur</a></li>
+                                                    <li><a href="#" class="">Donasi Sumbangan</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -110,7 +158,21 @@
                                 <a href="#report" data-toggle="collapse" class="collapsed"><i class="lnr lnr-printer"></i> <span>Laporan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                                 <div id="report" class="collapse ">
                                     <ul class="nav">
-                                        <li><a href="#" class="">Data Jemaat</a></li>
+                                        <li><a href="#pagesRepJemaat" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Data Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                            <div id="pagesRepJemaat" class="collapse">
+                                                <ul class="nav">
+                                                    <li><a href="#" class="">Per Jemaat</a></li>
+                                                    <li><a href="#" class="">Per Kepala Keluarga</a></li>
+                                                    <li><a href="#" class="">Seluruh Jemaat</a></li>
+                                                    <li><a href="#" class="">Per Kepel</a></li>
+                                                    <li><a href="#" class="">Per Komisi</a></li>
+                                                    <li><a href="#" class="">Ulang Tahun</a></li>
+                                                    <li><a href="#" class="">Per Pekerjaan</a></li>
+                                                    <li><a href="#" class="">Per Kelompok Umur</a></li>
+                                                    <li><a href="#" class="">Per Baptisan/Sidi</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                         <li><a href="#" class="">Mutasi Jemaat</a></li>                                        
                                     </ul>
                                 </div>

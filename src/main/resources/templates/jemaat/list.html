@@ -10,10 +10,10 @@
         </style>
     </head>
     <section layout:fragment="breadcrumb">
-        <h1>Daftar Keluarga</h1>
+        <h1>Daftar Jemaat</h1>
         <ol class="breadcrumb">
             <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Daftar Keluarga</li>
+            <li class="active">Daftar Jemaat</li>
         </ol>	
     </section>
     <section layout:fragment="content">	
@@ -24,10 +24,10 @@
                         <table width="100%">
                             <tr>
                                 <td>
-                                    <a th:href="@{/keluarga/form}" class="btn btn-primary" role="button" aria-pressed="true">Tambah [F3]</a>
+                                    <a th:href="@{/jemaat/form}" class="btn btn-primary" role="button" aria-pressed="true">Tambah [F3]</a>
                                 </td>
                                 <td align="right">
-                                    <form method="get" th:action="@{/keluarga/list}">
+                                    <form method="get" th:action="@{/jemaat/list}">
                                         <div class="title_right">
                                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                                 <div class="input-group">
@@ -49,32 +49,36 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th class="noWrapColumn" width="20%">Kode</th>
-                                    <th class="noWrapColumn" width="70%">Nama Keluarga</th>
-                                    <th class="noWrapColumn" width="70%">Kepel</th>
+                                    <th class="noWrapColumn" width="50%">Nama Jemaat</th>
+                                    <th class="noWrapColumn">Tgl. Lahir</th>
+                                    <th class="noWrapColumn">Hubungan</th>
+                                    <th class="noWrapColumn">L/P</th>
+                                    <th class="noWrapColumn">Pendidikan</th>
                                     <th class="noWrapColumn text-center">&nbsp;</th>
                                 </tr>
-                                <tr th:each="st,iter : ${keluarga.content}">
-                                    <td class="noWrapColumn" th:text="${st.klkod}">Kode</td>
-                                    <td class="noWrapColumn" th:text="${st.klnam}">Nama Keluarga</td>
-                                    <td class="noWrapColumn" th:text="${st.kpkod}">Kepel</td>
+                                <tr th:each="st,iter : ${jemaat.content}">
+                                    <td class="noWrapColumn" th:text="${st.jmnam}">Nama Jemaat</td>
+                                    <td class="noWrapColumn" th:text="${st.jmtgl}">Tgl. Lahir</td>
+                                    <td class="noWrapColumn" th:text="${st.jmhub}">Hubungan</td>
+                                    <td class="noWrapColumn" th:text="${st.jmjkl}">L/P</td>
+                                    <td class="noWrapColumn" th:text="${st.jmpdk}">Pendidikan</td>
                                     <td class="noWrapColumn text-center">
-                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/list(id=${st.klkod})}" title="Anggota Keluarga"><span class="glyphicon glyphicon-user"></span></a>
-                                        <a href="#" class="btn btn-info" th:href="@{/keluarga/form(id=${st.id})}" title="edit keluarga"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-info" th:href="@{/keluarga/delete(id=${st.id})}" title="delete keluarga"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
+                                        <a href="#" class="btn btn-info" th:href="@{/keluarga/list}" title="Daftar Keluarga"><span class="glyphicon glyphicon-user"></span></a>
+                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/form(id=${st.id})}" title="edit Jemaat"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/delete(id=${st.id})}" title="delete Jemaat"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div th:if="${not #lists.isEmpty(keluarga.content)}">
+                    <div th:if="${not #lists.isEmpty(jemaat.content)}">
                         <br/>
                         <div class="text-center"> 
                             <nav>
                                 <ul class="pagination" sd:pagination="full">
                                     <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
-                                    <li class="disabled"><a th:href="@{/keluarga/list}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                    <li class="active"><a th:href="@{/keluarga/list}">1 <span class="sr-only">(current)</span></a></li>
+                                    <li class="disabled"><a th:href="@{/jemaat/list}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                    <li class="active"><a th:href="@{/jemaat/list}">1 <span class="sr-only">(current)</span></a></li>
                                 </ul>
                             </nav>
                         </div>
