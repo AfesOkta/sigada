@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Daftar Jemaat</title>
+
+
+    </head>
+    <section layout:fragment="breadcrumb">
+        <h1>Tambah Jemaat</h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a th:href="@{/jemaat/list}">Daftar Jemaat</a></li>
+            <li class="active">Tambah Jemaat</li>
+        </ol>	
+    </section>
+
+    <section layout:fragment="content" class="container">
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Form<small>&nbsp;Insert & Update Jemaat
+                        </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <form method="post" th:action="@{/jemaat/form}" th:object="${jemaat}">
+                        <div class="form-group">
+                            <label>Kepel</label>
+                            <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKepel"
+                                    name="kepelId" th:field="*{kpkod}">
+                                <option value=""></option>
+                                <option th:each="dtf :${listKepel}"
+                                        th:text="${dtf.kpnam}"
+                                        th:value="${dtf.kpkod}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Keluarga</label>
+                            <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKeluarga"
+                                    name="keluargaId" th:field="*{klkod}">
+                                <option value=""></option>
+                                <option th:each="dtf :${listKeluarga}"
+                                        th:text="${dtf.klnam}"
+                                        th:value="${dtf.klkod}">
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tgl. Lahir</label>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="tglLahir" th:field="*{jmtgl}" required="true"/>
+                            </div>                      
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Kode Jemaat</label>
+                            <input type="text" th:field="*{jmkod}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Nama Jemaat</label>
+                            <input type="text" th:field="*{jmnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmjkl}" name="jmjkl">
+                                    <option value=""></option>
+                                    <option value="L">Laki Laki</option>
+                                    <option value="P">Perempuan</option>
+                            </select>                   
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Hubungan KK</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmhub}" name="jmhub">
+                                    <option value=""></option>
+                                    <option value="K">K.K</option>
+                                    <option value="I">Istri</option>
+                                    <option value="A">Anak</option>
+                                    <option value="O">Orang Tua</option>
+                                    <option value="L">Lain Lain</option>
+                            </select>                   
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Komisi</label>
+                            <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKomisi"
+                                    name="komisiId" th:field="*{kmkod}">
+                                <option value=""></option>
+                                <option th:each="dtf :${listKomisi}"
+                                        th:text="${dtf.kmnam}"
+                                        th:value="${dtf.kmkod}">
+                                </option>
+                            </select>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Status Menikah</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                                    <option value=""></option>
+                                    <option value="M">Menikah</option>
+                                    <option value="J">Janda</option>
+                                    <option value="D">Duda</option>
+                                    <option value="C">Cerai</option>
+                                    <option value="B">Belum</option>
+                            </select>  
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Baptis</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmbpt}" name="jmbpt">
+                                    <option value=""></option>
+                                    <option value="Y">Ya</option>
+                                    <option value="T">Tidak</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Sidi</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmsid}" name="jmsid">
+                                    <option value=""></option>
+                                    <option value="Y">Ya</option>
+                                    <option value="T">Tidak</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Pekerjaan</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                                    <option value=""></option>
+                                    <option value="A">ASN/PNS</option>
+                                    <option value="B">POLRI/TNI</option>
+                                    <option value="C">PETANI</option>
+                                    <option value="D">NELAYAN</option>
+                                    <option value="E">KRY. SWASTA</option>
+                                    <option value="F">WIRASWASTA</option>
+                                    <option value="G">LAIN LAIN</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Pendidikan</label>
+                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                                    <option value=""></option>
+                                    <option value="A">ASN/PNS</option>
+                                    <option value="B">POLRI/TNI</option>
+                                    <option value="C">PETANI</option>
+                                    <option value="D">NELAYAN</option>
+                                    <option value="E">KRY. SWASTA</option>
+                                    <option value="F">WIRASWASTA</option>
+                                    <option value="G">LAIN LAIN</option>
+                            </select>
+                        </div> 
+                        
+                        <input type="hidden" name="id" th:field="*{id}">
+
+                        <div class="form-group">
+
+                            <input class="btn btn-primary" type="submit" value="Save">
+                            <a th:href="@{/jemaat/list}" class="btn btn-primary" role="button">
+                                <span aria-hidden="true"></span>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript" th:inline="javascript">
+                 $('#tglLahir').datepicker({
+                    autoclose: true,
+                    clearBtn: true,
+                    format: "dd-mm-yyyy",
+                    todayHighlight: true
+//                    }).on('changeDate', function (e) {
+//                        $('#tglLahir').datepicker('setDate', e.date);
+                });
+            </script>
+        </div>
+    </section>
+
+</html>

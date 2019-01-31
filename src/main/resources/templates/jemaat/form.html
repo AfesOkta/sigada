@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Daftar Jemaat</title>
+
+
+    </head>
+    <section layout:fragment="breadcrumb">
+        <h1>Tambah Jemaat</h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a th:href="@{/jemaat/list}">Daftar Jemaat</a></li>
+            <li class="active">Tambah Jemaat</li>
+        </ol>	
+    </section>
+
+    <section layout:fragment="content" class="container">
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Form<small>&nbsp;Insert & Update Jemaat
+                        </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+
+                    <form method="post" th:action="@{/jemaat/form}" th:object="${jemaat}">
+                        <div class="form-group">
+                            <label>Kepel</label>
+                            <input type="text" th:field="*{klkod}"
+                                   class="form-control" name="klkod" placeholder="Kode Jemaat">
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Keluarga</label>
+                            <input type="text" th:field="*{klkod}"
+                                   class="form-control" name="klkod" placeholder="Kode Jemaat">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tgl. Lahir</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Kode Jemaat</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Nama Jemaat</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Hubungan KK</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Komisi</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Status Menikah</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Baptis</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Sidi</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Pekerjaan</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label>Pendidikan</label>
+                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                        </div> 
+                        <div class="form-group">
+                            <label>Select Pelayanan</label>
+                            <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKepel"
+                                    name="kepelId" th:field="*{kpkod}">
+                                <option value=""></option>
+                                <option th:each="dtf :${listKepel}"
+                                        th:text="${dtf.kpnam}"
+                                        th:value="${dtf.kpkod}">
+                                </option>
+                            </select>
+                        </div>                        
+                        <input type="hidden" name="id" th:field="*{id}">
+
+                        <div class="form-group">
+
+                            <input class="btn btn-primary" type="submit" value="Save">
+                            <a th:href="@{/jemaat/list}" class="btn btn-primary" role="button">
+                                <span aria-hidden="true"></span>Cancel
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</html>
