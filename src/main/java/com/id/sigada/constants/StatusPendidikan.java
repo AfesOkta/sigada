@@ -10,10 +10,11 @@ package com.id.sigada.constants;
  * @author Afes
  */
 public interface StatusPendidikan {
-    final String SD="1";
-    final String SMP="2";
-    final String SMA="3";
-    final String S1="4";
-    final String S2="5";
-    final String S3="6";
+    final String LAIN_LAIN = "G";
+    final String SD_SMP="F";
+    final String SMA_SMK="E";
+    final String DIPLOMA="D";
+    final String S1="C";
+    final String S2="B";
+    final String S3="A";
 }

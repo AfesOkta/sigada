@@ -10,6 +10,11 @@ package com.id.sigada.constants;
  * @author Afes
  */
 public interface StatusPekerjaan {
-    final String Bekerja="1";
-    final String TidakBekerja ="2";
+    final String ASN_PNS="1";
+    final String TNI_POLRI ="2";
+    final String PETANI = "C";
+    final String NELAYAN = "D";
+    final String KRYSWASTA = "E";
+    final String WIRASWASTA = "F";
+    final String LAINNYA = "G";
 }

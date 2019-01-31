@@ -10,7 +10,7 @@ package com.id.sigada.constants;
  * @author Afes
  */
 public interface StatusNikah {    
-    final String Nikah="N";
+    final String Menikah="M";
     final String Janda="J";
     final String Duda ="D";
     final String Cerai = "C";
