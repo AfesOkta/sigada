@@ -12,6 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,6 +23,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -63,12 +67,16 @@ public class RpJmt implements Serializable {
     @Size(max = 30)
     @Column(name = "jmnam")
     private String jmnam;
-    @Size(max = 4)
-    @Column(name = "klkod")
-    private String klkod;
-    @Size(max = 2)
-    @Column(name = "kpkod")
-    private String kpkod;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "klkod")
+    @Getter @Setter
+    private RmKel klkod;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "kpkod")
+    @Getter @Setter    
+    private RmKpl kpkod;
     @Column(name = "jmtgl")
     @Temporal(TemporalType.DATE)
     private Date jmtgl;

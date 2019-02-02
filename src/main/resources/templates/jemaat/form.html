@@ -119,6 +119,20 @@
 
                 </div>
             </div>
+            <script type="text/javascript" th:inline="javascript">
+                 $('#tglLahir').datepicker({
+                    autoclose: true,
+                    clearBtn: true,
+                    format: "dd-mm-yyyy",
+                    todayHighlight: true
+//                    }).on('changeDate', function (e) {
+//                        $('#tglLahir').datepicker('setDate', e.date);
+                });
+                $(".js-example-placeholder-single").select2({
+                    placeholder: "Pilih Salah Satu",
+                    allowClear: true
+                });
+            </script>
         </div>
 
     </section>

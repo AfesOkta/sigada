@@ -20,6 +20,8 @@
         <link rel="stylesheet" th:href="@{/css/demo.css}" href="../css/demo.css">
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css"/>
+
         <!-- ICONS -->
         <link rel="apple-touch-icon" sizes="76x76" th:href="@{/img/apple-icon.png}" href="../img/apple-icon.png">
         <link rel="icon" type="image/png" sizes="96x96" th:href="@{/img/favicon.png}" href="../img/favicon.png">
@@ -101,7 +103,7 @@
                                         <li><a href="#pagesJemaat" data-toggle="collapse" class="collapsed"><i class="lnr lnr-list"></i> <span>Data Jemaat</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                                             <div id="pagesJemaat" class="collapse">
                                                 <ul class="nav">
-                                                    <li><a th:href="@{/jemaat/list}" class="">Data Jemaat</a></li>
+                                                    <li><a th:href="@{/jemaat/listAll}" class="">Data Jemaat</a></li>
                                                     <li><a href="#" class="">Data Kepala Keluarga</a></li>
                                                     <li><a th:href="@{/keluarga/list}" class="">Keluarga Baru</a></li>
                                                 </ul>
@@ -239,7 +241,8 @@
 <script th:src="@{/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js}" src="../vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 <script th:src="@{/vendor/chartist/js/chartist.min.js}" src="../vendor/chartist/js/chartist.min.js"></script>
 <script th:src="@{/scripts/klorofil-common.js}" src="../scripts/klorofil-common.js"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+<!--<script>
     $(function () {
         var data, options;
 
@@ -356,7 +359,7 @@
         }
 
     });
-</script>
+</script>-->
 </body>
 
 </html>

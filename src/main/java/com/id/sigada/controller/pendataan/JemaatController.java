@@ -79,19 +79,19 @@ public class JemaatController {
 
         if (id == null) {
             rpJmt = new RpJmt();
-            rpJmt.setKlkod(klkod);
             if (klkod != null) {
-                RmKel kpl = keluargaDao.findByKlkod(klkod);
-                if (kpl != null) {
-                    rpJmt.setKpkod(kpl.getKpkod());
-                }
+                RmKel rmKel = keluargaDao.findByKlkod(klkod);
+                if (rmKel != null) {
+                    rpJmt.setKlkod(rmKel);
+                    rpJmt.setKpkod(rmKel.getKpkod());
+                }                                                
             }
         } else {
             rpJmt = dao.findById(id).orElse(new RpJmt());
         }
         model.addAttribute("jemaat", rpJmt);  
         model.addAttribute("listKepel",kepelDao.findAll());
-        model.addAttribute("listKeluarga", keluargaDao.findAll());
+//        model.addAttribute("listKeluarga", keluargaDao.findAll());
         model.addAttribute("listKomisi", komisiDao.findAll());
     }
     
