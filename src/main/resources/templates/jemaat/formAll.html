@@ -12,7 +12,7 @@
         <h1>Tambah Jemaat</h1>
         <ol class="breadcrumb">
             <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a th:href="@{/jemaat/list}">Daftar Jemaat</a></li>
+            <li><a th:href="@{/jemaat/listAll}">Daftar Jemaat</a></li>
             <li class="active">Tambah Jemaat</li>
         </ol>	
     </section>
@@ -29,7 +29,7 @@
 
                 <div class="x_content">
 
-                    <form method="post" th:action="@{/jemaat/form}" th:object="${jemaat}">
+                    <form method="post" th:action="@{/jemaat/formAll}" th:object="${jemaat}">
                         <div class="form-group">
                             <label>Kepel</label>
                             <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKepel"
