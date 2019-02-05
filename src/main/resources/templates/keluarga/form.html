@@ -5,69 +5,65 @@
     <head>
         <meta charset="UTF-8">
         <title>Daftar Keluarga</title>
-
-
     </head>
-    <section layout:fragment="breadcrumb">
-        <h1>Tambah Keluarga</h1>
-        <ol class="breadcrumb">
-            <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a th:href="@{/keluarga/list}">Daftar Keluarga</a></li>
-            <li class="active">Tambah Keluarga</li>
-        </ol>	
-    </section>
-
-    <section layout:fragment="content" class="container">
-
-        <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Form<small>&nbsp;Insert & Update Keluarga
-                        </small></h2>
-                    <div class="clearfix"></div>
-                </div>
-
-                <div class="x_content">
-
-                    <form method="post" th:action="@{/keluarga/form}" th:object="${keluarga}">
-                        
-                        <div class="form-group">
-                            <label>Kode Keluarga</label>
-                            <input type="text" th:field="*{klkod}"
-                                   class="form-control" name="klkod" placeholder="Kode Keluarga">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Nama Keluarga</label>
-                            <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Keluarga">
-                        </div>                                                                                             
-                        
-                        <div class="form-group">
-                            <label>Select Pelayanan</label>
-                            <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKepel"
-                                    name="kepelId" th:field="*{kpkod}">
-                                <option value=""></option>
-                                <option th:each="dtf :${listKepel}"
-                                        th:text="${dtf.kpnam}"
-                                        th:value="${dtf.kpkod}">
-                                </option>
-                            </select>
-                        </div>                        
-                        <input type="hidden" name="id" th:field="*{id}">
-
-                        <div class="form-group">
-
-                            <input class="btn btn-primary" type="submit" value="Save">
-                            <a th:href="@{/keluarga/list}" class="btn btn-primary" role="button">
-                                <span aria-hidden="true"></span>Cancel
-                            </a>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+    <body>
+        <div layout:fragment="breadcrumb">
+            <h1>Tambah Keluarga</h1>
+            <ol class="breadcrumb">
+                <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a th:href="@{/keluarga/list}">Daftar Keluarga</a></li>
+                <li class="active">Tambah Keluarga</li>
+            </ol>	
         </div>
+        <div layout:fragment="content" class="container">
 
-    </section>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Form<small>&nbsp;Insert & Update Keluarga
+                            </small></h2>
+                        <div class="clearfix"></div>
+                    </div>
 
+                    <div class="x_content">
+
+                        <form method="post" th:action="@{/keluarga/form}" th:object="${keluarga}">                            
+                            <div class="form-group">
+                                <label>Kode Keluarga</label>
+                                <input type="text" th:field="*{klkod}"
+                                       class="form-control" name="klkod" placeholder="Kode Keluarga">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nama Keluarga</label>
+                                <input type="text" th:field="*{klnam}" class="form-control" name="klnam" placeholder="Nama Keluarga">
+                            </div>                                                                                             
+
+                            <div class="form-group">
+                                <label>Pilih Pelayanan</label>
+                                <select class="form-control" required="true" th:field="*{kpkod}">
+                                    <option value=""></option>
+                                    <option th:each="p :${listKepel}"
+                                            th:value="${p.id}"
+                                            th:text="${p.kpnam}">Silahkan Pilih
+                                    </option>                                    
+                                </select>           
+                                <input th:if="${not #lists.isEmpty(listKepel)}" class="form-control" type="text" th:field="*{kpkod}"/>
+                            </div>                        
+                            <input type="hidden" name="id" th:field="*{id}">
+
+                            <div class="form-group">
+
+                                <input class="btn btn-primary" type="submit" value="Save">
+                                <a th:href="@{/keluarga/list}" class="btn btn-primary" role="button">
+                                    <span aria-hidden="true"></span>Cancel
+                                </a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>            
+        </div>            
+    </body>           
 </html>

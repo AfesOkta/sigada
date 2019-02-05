@@ -8,6 +8,7 @@ package com.id.sigada.controller.pendataan;
 import com.id.sigada.dao.KeluargaDao;
 import com.id.sigada.dao.KepelDao;
 import com.id.sigada.entities.RmKel;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -59,8 +60,11 @@ public class KeluargaController {
     }
 
     @PostMapping("/keluarga/form")
-    public String prosesForm(@ModelAttribute @Valid RmKel keluarga, BindingResult errors, SessionStatus status) {
+    public String prosesForm(@ModelAttribute @Valid RmKel keluarga, 
+            BindingResult errors, SessionStatus status, Model model) {
         if (errors.hasErrors()) {
+            model.addAttribute("keluarga", keluarga);
+            model.addAttribute("listKepel",kepelDao.findAll());
             return "keluarga/form";
         }        
         dao.save(keluarga);

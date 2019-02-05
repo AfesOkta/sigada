@@ -40,12 +40,10 @@ import org.hibernate.annotations.GenericGenerator;
     , @NamedQuery(name = "RmKel.findByKpkod", query = "SELECT r FROM RmKel r WHERE r.kpkod = :kpkod")})
 public class RmKel implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(generator = "uuid" )
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 4)
@@ -59,8 +57,7 @@ public class RmKel implements Serializable {
     private String klkkk;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "kpkod")
-    @Getter @Setter    
-    private RmKpl kpkod;
-    
+    @JoinColumn(name = "id_kpkod")       
+    private @Getter @Setter RmKpl kpkod;
+
 }
