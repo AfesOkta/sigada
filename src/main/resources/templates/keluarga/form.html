@@ -48,7 +48,7 @@
                                             th:text="${p.kpnam}">Silahkan Pilih
                                     </option>                                    
                                 </select>           
-                                <input th:if="${not #lists.isEmpty(listKepel)}" class="form-control" type="text" th:field="*{kpkod}"/>
+                                <input th:if="${not #lists.isEmpty(listKepel)}" class="form-control" type="hidden" th:field="*{kpkod}"/>
                             </div>                        
                             <input type="hidden" name="id" th:field="*{id}">
 
