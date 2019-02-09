@@ -30,8 +30,8 @@
                 <div class="x_content">
 
                     <form method="post" th:action="@{/jemaat/formAll}" th:object="${jemaat}">
-                        <span class="hidden" th:if="${jemaat.kpkod != null}" id="kepelId" th:text="${jemaat.kpkod.kpkod}"></span>
-                        <span class="hidden" th:if="${jemaat.klkod != null}" id="keluargaId" th:text="${jemaat.klkod.klkod}"></span>
+                        <span class="hidden" th:if="${jemaat.kpkod != null}" id="kepelId" th:text="${jemaat.kpkod.id}"></span>
+                        <span class="hidden" th:if="${jemaat.klkod != null}" id="keluargaId" th:text="${jemaat.klkod.id}"></span>
 
                         <div class="form-group">
                             <label>Kepel</label>
@@ -39,8 +39,8 @@
                                     th:field="*{kpkod}">
                                 <option value=""></option>
                                 <option th:each="dtf :${listKepel}"
-                                        th:text="${dtf.kpnam}"
-                                        th:value="${dtf.kpkod}">
+                                        th:value="${dtf.id}"
+                                        th:text="${dtf.kpnam}">
                                 </option>
                             </select>
                         </div>
@@ -49,25 +49,24 @@
                             <select th:field="*{klkod}" class="form-control selectpicker" 
                                     data-live-search="true"
                                     data-size="5" 
-                                    title="Pilih Keluarga..." required="true">
-                                <option th:each="p : ${listKeluarga}"
-                                        th:value="${p.klkod}"
-                                        th:text="${p.klnam}">Pilih Keluarga
-                                </option>
+                                    title="Pilih Keluarga..." required="true">                                
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Tgl. Lahir</label>
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>                            
+                                </div>
+                                <input type="date" class="form-control" th:field="*{jmtgl}" ud="jmtgl" name="jmtgl">                                                  
                             </div>
-                            <input type="date" class="form-control" th:field="*{jmtgl}" name="jmtgl">                      
                         </div> 
 
                         <div class="form-group">
                             <label>Kode Jemaat</label>
-                            <input type="text" th:field="*{jmkod}" class="form-control" name="klnam" placeholder="Nama Jemaat">
+                            <input type="text" th:field="*{jmkod}"
+                                   class="form-control" name="jmkod" placeholder="Kode Jemaat" id="jmkod">
                         </div> 
 
                         <div class="form-group">
@@ -77,7 +76,7 @@
 
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmjkl}" name="jmjkl">
+                            <select class="form-control js-example-placeholder-single" th:field="*{sjk}" name="sjk">
                                 <option value=""></option>
                                 <option value="L">Laki Laki</option>
                                 <option value="P">Perempuan</option>
@@ -86,9 +85,9 @@
 
                         <div class="form-group">
                             <label>Hubungan KK</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmhub}" name="jmhub">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusHubKk}" name="statusHubKk">
                                 <option value=""></option>
-                                <option value="K">K.K</option>
+                                <option value="KK">K.K</option>
                                 <option value="I">Istri</option>
                                 <option value="A">Anak</option>
                                 <option value="O">Orang Tua</option>
@@ -101,16 +100,16 @@
                             <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKomisi"
                                     name="komisiId" th:field="*{kmkod}">
                                 <option value=""></option>
-                                <option th:each="dtf :${listKomisi}"
-                                        th:text="${dtf.kmnam}"
-                                        th:value="${dtf.kmkod}">
+                                <option th:each="dtf :${listKomisi}"                                        
+                                        th:value="${dtf.id}"
+                                        th:text="${dtf.kmnam}">
                                 </option>
                             </select>
                         </div> 
 
                         <div class="form-group">
                             <label>Status Menikah</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusNikah}" name="statusNikah">
                                 <option value=""></option>
                                 <option value="M">Menikah</option>
                                 <option value="J">Janda</option>
@@ -122,25 +121,25 @@
 
                         <div class="form-group">
                             <label>Baptis</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmbpt}" name="jmbpt">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusBaptis}" name="statusBaptis">
                                 <option value=""></option>
-                                <option value="Y">Ya</option>
-                                <option value="T">Tidak</option>
+                                <option value="S">Ya</option>
+                                <option value="B">Tidak</option>
                             </select>
                         </div> 
 
                         <div class="form-group">
                             <label>Sidi</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmsid}" name="jmsid">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusSidi}" name="statusSidi">
                                 <option value=""></option>
-                                <option value="Y">Ya</option>
-                                <option value="T">Tidak</option>
+                                <option value="S">Ya</option>
+                                <option value="B">Tidak</option>
                             </select>
                         </div> 
 
                         <div class="form-group">
                             <label>Pekerjaan</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusPekerjaan}" name="statusPekerjaan">
                                 <option value=""></option>
                                 <option value="A">ASN/PNS</option>
                                 <option value="B">POLRI/TNI</option>
@@ -154,14 +153,14 @@
 
                         <div class="form-group">
                             <label>Pendidikan</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{jmnkh}" name="jmnkh">
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusPendidikan}" name="statusPendidikan">
                                 <option value=""></option>
-                                <option value="A">ASN/PNS</option>
-                                <option value="B">POLRI/TNI</option>
-                                <option value="C">PETANI</option>
-                                <option value="D">NELAYAN</option>
-                                <option value="E">KRY. SWASTA</option>
-                                <option value="F">WIRASWASTA</option>
+                                <option value="A">S3</option>
+                                <option value="B">S2</option>
+                                <option value="C">S1</option>
+                                <option value="D">DIPLOMA</option>
+                                <option value="E">SMA/SMK</option>
+                                <option value="F">SD/SMP</option>
                                 <option value="G">LAIN LAIN</option>
                             </select>
                         </div> 
@@ -184,32 +183,57 @@
 </html>
 <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
+    function formatRepo(repo) {
+        if (repo.loading)
+            return repo.text;
+        var markup = repo.nama;
+
+        return markup;
+    }
+
+    function formatRepoSelection(repo) {
+        return repo.nama || repo.text;
+    }
+    
     $(document).ready(function () {
-        $('#tglLahir').datepicker({
+       $('#jmtgl').datepicker({
             autoclose: true,
             clearBtn: true,
-            format: "dd-mm-yyyy",
+            format: "yy-mm-dd",
             todayHighlight: true
-//                    }).on('changeDate', function (e) {
-//                        $('#tglLahir').datepicker('setDate', e.date);
+            }).on('changeDate', function (e) {
+              $('#jmtgl').datepicker('setDate', e.date);
         });
+        
+        $("#jmtgl").bind("change", function() {
+            var vTgl = $(this).val();
+            var content = "";
+            $.get("/api/client/get/jemaat/maxkode/"+vTgl).done(function (data) {
+                content = data;                                              
+                $("#jmkod").val(content);                
+//               console.log("kode="+content);
+            });            
+        });
+        
         $("#kepelId").on("change", function () {
             var idKepel = $(this).val();
             getListKeluarga(idKepel);
-        });
-        function getListKeluarga(idFakultas, prodiValue = null) {
-            alert("test");
+        });               
+                    
+        function getListKeluarga(idFakultas, prodiValue = null) {            
             $.get("/api/client/get/keluarga/" + idFakultas).done(function (data) {
                 var content = "";
                 for (var i = 0; i < data.length; i++) {
-                    content += "<option value='" + data[i].id + "'>" + data[i].nama + "</option>";
+                    content += "<option value='" + data[i].id + "'>" + data[i].klnam + "</option>";
                 }
-                $("#keluargaId").html(content).selectpicker('refresh');
+                
+                $("#klkod").html(content).selectpicker('refresh');
                 if (prodiValue != null) {
-                    setSelectValue("keluargaId", prodiValue);
+                    setSelectValue("klkod", prodiValue);
                 }
             });
         }
+                
         function setSelectValue(id, value) {
             $('#' + id).selectpicker('val', value);
         }

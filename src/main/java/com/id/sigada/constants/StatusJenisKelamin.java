@@ -9,7 +9,6 @@ package com.id.sigada.constants;
  *
  * @author Afes
  */
-public interface StatusJenisKelamin {
-    final String LakiLaki="L";
-    final String Perempuan="P";
+public enum StatusJenisKelamin {
+    L, P;
 }

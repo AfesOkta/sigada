@@ -9,10 +9,6 @@ package com.id.sigada.constants;
  *
  * @author Afes
  */
-public interface StatusNikah {    
-    final String Menikah="M";
-    final String Janda="J";
-    final String Duda ="D";
-    final String Cerai = "C";
-    final String Belum = "B";
+public enum StatusNikah {    
+    M, J, D, C, B;
 }

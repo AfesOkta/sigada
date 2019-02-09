@@ -20,4 +20,5 @@ public interface KepelDao extends JpaRepository<RmKpl, String>{
     RmKpl findByKpkod(String kpkod);
     
     Page<RmKpl> findByKpnamContainingIgnoreCase(String kpnam, Pageable pageable);
+    
 }

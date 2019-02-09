@@ -9,10 +9,6 @@ package com.id.sigada.constants;
  *
  * @author naydit
  */
-public interface StatusHubKk {
-    final String KK = "K";
-    final String Istri = "I";
-    final String Anak = "A";
-    final String OrangTua = "O";
-    final String Lain_Lain = "L";
+public enum StatusHubKk {
+    KK, I, A, O, L;
 }

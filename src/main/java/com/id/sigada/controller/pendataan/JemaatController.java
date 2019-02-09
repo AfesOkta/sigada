@@ -11,8 +11,7 @@ import com.id.sigada.dao.KepelDao;
 import com.id.sigada.dao.KomisiDao;
 import com.id.sigada.entities.RmKel;
 import com.id.sigada.entities.RpJmt;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.id.sigada.util.GeneratorKode;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +30,7 @@ import org.springframework.web.bind.support.SessionStatus;
  * @author Afes
  */
 @Controller
-public class JemaatController {
+public class JemaatController extends GeneratorKode{
     @Autowired
     private JemaatDao dao;
     @Autowired
@@ -96,12 +95,17 @@ public class JemaatController {
     }
     
     @PostMapping("/jemaat/formAll")
-    public String prosesForm(@ModelAttribute @Valid RpJmt jemaat, BindingResult errors, SessionStatus status) {
+    public String prosesForm(Model model, @ModelAttribute @Valid RpJmt jemaat, BindingResult errors, SessionStatus status) {
         if (errors.hasErrors()) {
+            model.addAttribute("jemaat", jemaat);  
+            model.addAttribute("listKepel",kepelDao.findAll());
+    //        model.addAttribute("listKeluarga", keluargaDao.findAll());
+            model.addAttribute("listKomisi", komisiDao.findAll());
             return "jemaat/formAll";
         } 
+        GeneratorKode gk = new GeneratorKode();
         if (jemaat.getJmtgl()!=null) {
-            jemaat.setJmkod(getMaxKlkod(jemaat.getJmtgl()));
+            jemaat.setJmkod(gk.getMaxKlkod(dao, jemaat.getJmtgl()));
         }else {
             return "jemaat/formAll";
         }
@@ -109,30 +113,5 @@ public class JemaatController {
         status.setComplete();
         return "redirect:list";
     }
-    /**
-     * 
-     * @return Max Kode Jemaat
-     */
-    private String getMaxKlkod(Date tgl) {
-        String id;
-        SimpleDateFormat sd = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat sdf = new SimpleDateFormat("yymmdd");
-        String maxKode = dao.getMaxKode(sd.format(tgl));        
-        if ("0".equals(maxKode)) {
-            return "01";
-        } else {
-            id = String.valueOf(Integer.valueOf(maxKode) + 1);
-        }
-        String comCod = "";
-        switch (id.length()) {
-            case 1:
-                id = "0" + id;
-                break;
-            case 2:
-                id = id;
-                break;                        
-        }
-        comCod = sdf.format(tgl).concat(id);
-        return comCod;
-    }
+    
 }

@@ -9,7 +9,6 @@ package com.id.sigada.constants;
  *
  * @author Afes
  */
-public interface StatusBaptis {
-    final String Belum="B";
-    final String Sudah="S";
+public enum StatusBaptis {
+    B, S;
 }

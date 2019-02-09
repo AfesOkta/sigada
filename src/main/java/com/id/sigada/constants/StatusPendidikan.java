@@ -9,12 +9,6 @@ package com.id.sigada.constants;
  *
  * @author Afes
  */
-public interface StatusPendidikan {
-    final String LAIN_LAIN = "G";
-    final String SD_SMP="F";
-    final String SMA_SMK="E";
-    final String DIPLOMA="D";
-    final String S1="C";
-    final String S2="B";
-    final String S3="A";
+public enum StatusPendidikan {
+    A, B, C, D, E, F, G;
 }

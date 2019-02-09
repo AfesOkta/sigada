@@ -28,6 +28,6 @@ public interface KeluargaDao extends JpaRepository<RmKel, String>{
     @Query(value="select COALESCE( NULLIF(Max(right(klkod,4)),''), '0' ) from public.rmkel ",nativeQuery = true)
     String getMaxKode();
     
-    @Query("SELECT r FROM RmKel r WHERE r.kpkod = :kpkod")
-    List<RmKel> getByKpkod(@Param("kpkod") RmKpl kpkod);
+    @Query(value="SELECT r.* FROM RmKel r WHERE r.id_kpkod = :id_kpkod", nativeQuery = true)
+    List<RmKel> findByIdKpkod(@Param("id_kpkod") String id_kpkod);
 }

@@ -5,11 +5,20 @@
  */
 package com.id.sigada.entities;
 
+import com.id.sigada.constants.StatusBaptis;
+import com.id.sigada.constants.StatusHubKk;
+import com.id.sigada.constants.StatusJenisKelamin;
+import com.id.sigada.constants.StatusNikah;
+import com.id.sigada.constants.StatusPekerjaan;
+import com.id.sigada.constants.StatusPendidikan;
+import com.id.sigada.constants.StatusSidi;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,22 +44,22 @@ import org.hibernate.annotations.GenericGenerator;
 @Data
 @Table(name = "rpjmt")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "RpJmt.findAll", query = "SELECT r FROM RpJmt r")
-    , @NamedQuery(name = "RpJmt.findByJmkod", query = "SELECT r FROM RpJmt r WHERE r.jmkod = :jmkod")
-    , @NamedQuery(name = "RpJmt.findByJmnam", query = "SELECT r FROM RpJmt r WHERE r.jmnam = :jmnam")
-    , @NamedQuery(name = "RpJmt.findByKlkod", query = "SELECT r FROM RpJmt r WHERE r.klkod = :klkod")
-    , @NamedQuery(name = "RpJmt.findByKpkod", query = "SELECT r FROM RpJmt r WHERE r.kpkod = :kpkod")
-    , @NamedQuery(name = "RpJmt.findByJmtgl", query = "SELECT r FROM RpJmt r WHERE r.jmtgl = :jmtgl")
-    , @NamedQuery(name = "RpJmt.findByJmhut", query = "SELECT r FROM RpJmt r WHERE r.jmhut = :jmhut")
-    , @NamedQuery(name = "RpJmt.findByJmbpt", query = "SELECT r FROM RpJmt r WHERE r.jmbpt = :jmbpt")
-    , @NamedQuery(name = "RpJmt.findByJmsid", query = "SELECT r FROM RpJmt r WHERE r.jmsid = :jmsid")
-    , @NamedQuery(name = "RpJmt.findByJmnkh", query = "SELECT r FROM RpJmt r WHERE r.jmnkh = :jmnkh")
-    , @NamedQuery(name = "RpJmt.findByJmkrj", query = "SELECT r FROM RpJmt r WHERE r.jmkrj = :jmkrj")
-    , @NamedQuery(name = "RpJmt.findByJmpdk", query = "SELECT r FROM RpJmt r WHERE r.jmpdk = :jmpdk")
-    , @NamedQuery(name = "RpJmt.findByKmkod", query = "SELECT r FROM RpJmt r WHERE r.kmkod = :kmkod")
-    , @NamedQuery(name = "RpJmt.findByJmhub", query = "SELECT r FROM RpJmt r WHERE r.jmhub = :jmhub")
-    , @NamedQuery(name = "RpJmt.findByJmjkl", query = "SELECT r FROM RpJmt r WHERE r.jmjkl = :jmjkl")})
+//@NamedQueries({
+//    @NamedQuery(name = "RpJmt.findAll", query = "SELECT r FROM RpJmt r")
+//    , @NamedQuery(name = "RpJmt.findByJmkod", query = "SELECT r FROM RpJmt r WHERE r.jmkod = :jmkod")
+//    , @NamedQuery(name = "RpJmt.findByJmnam", query = "SELECT r FROM RpJmt r WHERE r.jmnam = :jmnam")
+//    , @NamedQuery(name = "RpJmt.findByKlkod", query = "SELECT r FROM RpJmt r WHERE r.klkod = :klkod")
+//    , @NamedQuery(name = "RpJmt.findByKpkod", query = "SELECT r FROM RpJmt r WHERE r.kpkod = :kpkod")
+//    , @NamedQuery(name = "RpJmt.findByJmtgl", query = "SELECT r FROM RpJmt r WHERE r.jmtgl = :jmtgl")
+//    , @NamedQuery(name = "RpJmt.findByJmhut", query = "SELECT r FROM RpJmt r WHERE r.jmhut = :jmhut")
+//    , @NamedQuery(name = "RpJmt.findByJmbpt", query = "SELECT r FROM RpJmt r WHERE r.jmbpt = :jmbpt")
+//    , @NamedQuery(name = "RpJmt.findByJmsid", query = "SELECT r FROM RpJmt r WHERE r.jmsid = :jmsid")
+//    , @NamedQuery(name = "RpJmt.findByJmnkh", query = "SELECT r FROM RpJmt r WHERE r.jmnkh = :jmnkh")
+//    , @NamedQuery(name = "RpJmt.findByJmkrj", query = "SELECT r FROM RpJmt r WHERE r.jmkrj = :jmkrj")
+//    , @NamedQuery(name = "RpJmt.findByJmpdk", query = "SELECT r FROM RpJmt r WHERE r.jmpdk = :jmpdk")
+//    , @NamedQuery(name = "RpJmt.findByKmkod", query = "SELECT r FROM RpJmt r WHERE r.kmkod = :kmkod")
+//    , @NamedQuery(name = "RpJmt.findByJmhub", query = "SELECT r FROM RpJmt r WHERE r.jmhub = :jmhub")
+//    , @NamedQuery(name = "RpJmt.findByJmjkl", query = "SELECT r FROM RpJmt r WHERE r.jmjkl = :jmjkl")})
 public class RpJmt implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,12 +78,12 @@ public class RpJmt implements Serializable {
     private String jmnam;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "klkod")
+    @JoinColumn(name = "id_klkod")
     @Getter @Setter
     private RmKel klkod;
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "kpkod")
+    @JoinColumn(name = "id_kpkod")
     @Getter @Setter    
     private RmKpl kpkod;
     @Column(name = "jmtgl")
@@ -84,20 +93,30 @@ public class RpJmt implements Serializable {
     @Column(name = "jmhut")
     private String jmhut;
     @Column(name = "jmbpt")
-    private Boolean jmbpt;
+    @Enumerated(EnumType.STRING)
+    StatusBaptis statusBaptis;
     @Column(name = "jmsid")
-    private Boolean jmsid;
+    @Enumerated(EnumType.STRING)
+    StatusSidi statusSidi;
     @Column(name = "jmnkh")
-    private Character jmnkh;
+    @Enumerated(EnumType.STRING)
+    StatusNikah statusNikah;
     @Column(name = "jmkrj")
-    private Character jmkrj;
+    @Enumerated(EnumType.STRING)
+    StatusPekerjaan statusPekerjaan;
     @Column(name = "jmpdk")
-    private Character jmpdk;
-    @Column(name = "kmkod")
-    private Character kmkod;
+    @Enumerated(EnumType.STRING)
+    StatusPendidikan statusPendidikan;
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_kmkod")
+    @Getter @Setter    
+    private RmKms kmkod;    
     @Column(name = "jmhub")
-    private Character jmhub;
+    @Enumerated(EnumType.STRING)
+    StatusHubKk statusHubKk;
     @Column(name = "jmjkl")
-    private Character jmjkl;
+    @Enumerated(EnumType.STRING)
+    StatusJenisKelamin sjk;
     
 }

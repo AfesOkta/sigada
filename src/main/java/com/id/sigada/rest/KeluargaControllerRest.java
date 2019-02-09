@@ -10,6 +10,7 @@ import com.id.sigada.dao.KepelDao;
 import com.id.sigada.entities.RmKel;
 import com.id.sigada.entities.RmKpl;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class KeluargaControllerRest {
     
     @RequestMapping(method = RequestMethod.GET, value = "/get/keluarga/{kpkod}", produces = "application/json")
     public List<RmKel> getKeluarga(@PathVariable String kpkod) {
-        RmKpl k = kepelDao.findByKpkod(kpkod);
-        return keluargaDao.getByKpkod(k);
+        Optional<RmKpl> k = kepelDao.findById(kpkod);
+        return keluargaDao.findByIdKpkod(k.get().getId());
     }
 }
