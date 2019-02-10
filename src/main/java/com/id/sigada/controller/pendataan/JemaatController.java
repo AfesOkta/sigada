@@ -12,6 +12,7 @@ import com.id.sigada.dao.KomisiDao;
 import com.id.sigada.entities.RmKel;
 import com.id.sigada.entities.RpJmt;
 import com.id.sigada.util.GeneratorKode;
+import java.text.SimpleDateFormat;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -96,6 +97,7 @@ public class JemaatController extends GeneratorKode{
     
     @PostMapping("/jemaat/formAll")
     public String prosesForm(Model model, @ModelAttribute @Valid RpJmt jemaat, BindingResult errors, SessionStatus status) {
+        SimpleDateFormat sd = new SimpleDateFormat("dd-mm");
         if (errors.hasErrors()) {
             model.addAttribute("jemaat", jemaat);  
             model.addAttribute("listKepel",kepelDao.findAll());
@@ -104,7 +106,8 @@ public class JemaatController extends GeneratorKode{
             return "jemaat/formAll";
         } 
         GeneratorKode gk = new GeneratorKode();
-        if (jemaat.getJmtgl()!=null) {
+        if (jemaat.getJmtgl()!=null) {            
+            jemaat.setJmhut(sd.format(jemaat.getJmtgl()));
             jemaat.setJmkod(gk.getMaxKlkod(dao, jemaat.getJmtgl()));
         }else {
             return "jemaat/formAll";

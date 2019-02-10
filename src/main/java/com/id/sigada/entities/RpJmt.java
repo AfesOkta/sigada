@@ -5,26 +5,16 @@
  */
 package com.id.sigada.entities;
 
-import com.id.sigada.constants.StatusBaptis;
-import com.id.sigada.constants.StatusHubKk;
-import com.id.sigada.constants.StatusJenisKelamin;
-import com.id.sigada.constants.StatusNikah;
-import com.id.sigada.constants.StatusPekerjaan;
-import com.id.sigada.constants.StatusPendidikan;
-import com.id.sigada.constants.StatusSidi;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +25,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  *
@@ -71,52 +63,190 @@ public class RpJmt implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 8)
-    @Column(name = "jmkod")
+    @Column(name = "jmkod", nullable = false, length = 8)
     private String jmkod;
     @Size(max = 30)
-    @Column(name = "jmnam")
+    @Column(name = "jmnam", length = 30)
     private String jmnam;
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_klkod")
-    @Getter @Setter
-    private RmKel klkod;
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_kpkod")
-    @Getter @Setter    
-    private RmKpl kpkod;
     @Column(name = "jmtgl")
     @Temporal(TemporalType.DATE)
     private Date jmtgl;
     @Size(max = 5)
-    @Column(name = "jmhut")
+    @Column(name = "jmhut", length = 5)
     private String jmhut;
-    @Column(name = "jmbpt")
-    @Enumerated(EnumType.STRING)
-    StatusBaptis statusBaptis;
-    @Column(name = "jmsid")
-    @Enumerated(EnumType.STRING)
-    StatusSidi statusSidi;
-    @Column(name = "jmnkh")
-    @Enumerated(EnumType.STRING)
-    StatusNikah statusNikah;
-    @Column(name = "jmkrj")
-    @Enumerated(EnumType.STRING)
-    StatusPekerjaan statusPekerjaan;
-    @Column(name = "jmpdk")
-    @Enumerated(EnumType.STRING)
-    StatusPendidikan statusPendidikan;
+    @Size(max = 255)
+    @Column(name = "jmbpt", length = 255)
+    private String jmbpt;
+    @Size(max = 255)
+    @Column(name = "jmsid", length = 255)
+    private String jmsid;
+    @Size(max = 255)
+    @Column(name = "jmnkh", length = 255)
+    private String jmnkh;
+    @Size(max = 255)
+    @Column(name = "jmkrj", length = 255)
+    private String jmkrj;
+    @Size(max = 255)
+    @Column(name = "jmpdk", length = 255)
+    private String jmpdk;
+    @Size(max = 255)
+    @Column(name = "jmhub", length = 255)
+    private String jmhub;
+    @Size(max = 255)
+    @Column(name = "jmjkl", length = 255)
+    private String jmjkl;
+
+    
+    
     @NotNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JoinColumn(name = "id_klkod")
+    @Getter @Setter
+    private RmKel klkod;
+    @NotNull    
+    @JoinColumn(name = "id_kpkod")
+    @Getter @Setter 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private RmKpl kpkod;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "id_kmkod")
     @Getter @Setter    
     private RmKms kmkod;    
-    @Column(name = "jmhub")
-    @Enumerated(EnumType.STRING)
-    StatusHubKk statusHubKk;
-    @Column(name = "jmjkl")
-    @Enumerated(EnumType.STRING)
-    StatusJenisKelamin sjk;
+    
+    public RpJmt(){}
+    
+    public RpJmt(String id) {
+        this.id = id;
+    }
+
+    public RpJmt(String id, String jmkod) {
+        this.id = id;
+        this.jmkod = jmkod;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getJmkod() {
+        return jmkod;
+    }
+
+    public void setJmkod(String jmkod) {
+        this.jmkod = jmkod;
+    }
+
+    public String getJmnam() {
+        return jmnam;
+    }
+
+    public void setJmnam(String jmnam) {
+        this.jmnam = jmnam;
+    }
+
+    public Date getJmtgl() {
+        return jmtgl;
+    }
+
+    public void setJmtgl(Date jmtgl) {
+        this.jmtgl = jmtgl;
+    }
+
+    public String getJmhut() {
+        return jmhut;
+    }
+
+    public void setJmhut(String jmhut) {
+        this.jmhut = jmhut;
+    }
+
+    public String getJmbpt() {
+        return jmbpt;
+    }
+
+    public void setJmbpt(String jmbpt) {
+        this.jmbpt = jmbpt;
+    }
+
+    public String getJmsid() {
+        return jmsid;
+    }
+
+    public void setJmsid(String jmsid) {
+        this.jmsid = jmsid;
+    }
+
+    public String getJmnkh() {
+        return jmnkh;
+    }
+
+    public void setJmnkh(String jmnkh) {
+        this.jmnkh = jmnkh;
+    }
+
+    public String getJmkrj() {
+        return jmkrj;
+    }
+
+    public void setJmkrj(String jmkrj) {
+        this.jmkrj = jmkrj;
+    }
+
+    public String getJmpdk() {
+        return jmpdk;
+    }
+
+    public void setJmpdk(String jmpdk) {
+        this.jmpdk = jmpdk;
+    }
+
+    public String getJmhub() {
+        return jmhub;
+    }
+
+    public void setJmhub(String jmhub) {
+        this.jmhub = jmhub;
+    }
+
+    public String getJmjkl() {
+        return jmjkl;
+    }
+
+    public void setJmjkl(String jmjkl) {
+        this.jmjkl = jmjkl;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof RpJmt)) {
+            return false;
+        }
+        RpJmt other = (RpJmt) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.id.sigada.entities.RpJmt[ id=" + id + " ]";
+    }
     
 }
