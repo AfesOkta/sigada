@@ -13,8 +13,8 @@ CREATE TABLE public.rpjmt
   id_klkod character(255), -- Kode Kepel
   jmtgl date, -- Tgl Lahir
   jmhut character varying(5), -- Tgl-Bln Lahir
-  jmbpt boolean, -- Baptis
-  jmsid boolean, -- Sidi
+  jmbpt character varying(255), -- Baptis
+  jmsid character varying(255), -- Sidi
   jmnkh character varying(255), -- nikah
   jmkrj character varying(255), -- Jenis Kerja
   jmpdk character varying(255), -- Jenis Pendidikan

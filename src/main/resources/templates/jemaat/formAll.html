@@ -29,10 +29,9 @@
 
                 <div class="x_content">
 
-                    <form method="post" th:action="@{/jemaat/formAll}" th:object="${jemaat}">
-                        <span class="hidden" th:if="${jemaat.kpkod != null}" id="kepelId" th:text="${jemaat.kpkod.id}"></span>
+                    <form method="post" th:action="@{/jemaat/formAll}" th:object="${jemaat}">                       
                         <span class="hidden" th:if="${jemaat.klkod != null}" id="keluargaId" th:text="${jemaat.klkod.id}"></span>
-
+                        
                         <div class="form-group">
                             <label>Kepel</label>
                             <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="kepelId"
@@ -59,7 +58,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>                            
                                 </div>
-                                <input type="date" class="form-control" th:field="*{jmtgl}" ud="jmtgl" name="jmtgl">                                                  
+                                <input type="text" class="form-control" 
+                                       id="tglLahir" th:field="*{jmtgl}" placeholder="yyyy-mm-dd">                                
                             </div>
                         </div> 
 
@@ -196,23 +196,23 @@
     }
     
     $(document).ready(function () {
-       $('#jmtgl').datepicker({
+       $('#tglLahir').datepicker({
             autoclose: true,
-            clearBtn: true,
-            format: "yy-mm-dd",
+            clearBtn: true,            
+            format: "yyyy-mm-dd",
             todayHighlight: true
-            }).on('changeDate', function (e) {
-              $('#jmtgl').datepicker('setDate', e.date);
+//            }).on('changeDate', function (e) {
+//              $('#jmtgl').datepicker('setDate', e.date);
         });
         
-        $("#jmtgl").bind("change", function() {
+        $("#tglLahir").bind("change", function() {
             var vTgl = $(this).val();
             var content = "";
             $.get("/api/client/get/jemaat/maxkode/"+vTgl).done(function (data) {
                 content = data;                                              
                 $("#jmkod").val(content);                
 //               console.log("kode="+content);
-            });            
+            });             
         });
         
         $("#kepelId").on("change", function () {
