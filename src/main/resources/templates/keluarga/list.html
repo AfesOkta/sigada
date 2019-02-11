@@ -59,7 +59,7 @@
                                     <td class="noWrapColumn" th:text="${st.klnam}">Nama Keluarga</td>
                                     <td class="noWrapColumn" th:text="${st.kpkod.kpnam}">Kepel</td>
                                     <td class="noWrapColumn text-center">
-                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/list(id=${st.klkod})}" title="Anggota Keluarga"><span class="glyphicon glyphicon-user"></span></a>
+                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/list(id=${st.id})}" title="Anggota Keluarga"><span class="glyphicon glyphicon-user"></span></a>
                                         <a href="#" class="btn btn-info" th:href="@{/keluarga/form(id=${st.id})}" title="edit keluarga"><span class="glyphicon glyphicon-edit"></span></a>
                                         <a href="#" class="btn btn-info" th:href="@{/keluarga/delete(id=${st.id})}" title="delete keluarga"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
                                     </td>

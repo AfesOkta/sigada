@@ -35,8 +35,7 @@
                         <div class="form-group">
                             <label>Kepel</label>
                             <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="kepelId"
-                                    th:field="*{kpkod}">
-                                <option value=""></option>
+                                    th:field="*{kpkod}">                                
                                 <option th:each="dtf :${listKepel}"
                                         th:value="${dtf.id}"
                                         th:text="${dtf.kpnam}">
@@ -76,8 +75,7 @@
 
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{sjk}" name="sjk">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{sjk}" name="sjk">                                
                                 <option value="L">Laki Laki</option>
                                 <option value="P">Perempuan</option>
                             </select>                   
@@ -85,8 +83,7 @@
 
                         <div class="form-group">
                             <label>Hubungan KK</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{statusHubKk}" name="statusHubKk">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusHubKk}" name="statusHubKk">                                
                                 <option value="KK">K.K</option>
                                 <option value="I">Istri</option>
                                 <option value="A">Anak</option>
@@ -98,8 +95,7 @@
                         <div class="form-group">
                             <label>Komisi</label>
                             <select style="width: 100%!important;" class="form-control js-example-placeholder-single" id="listKomisi"
-                                    name="komisiId" th:field="*{kmkod}">
-                                <option value=""></option>
+                                    name="komisiId" th:field="*{kmkod}">                                
                                 <option th:each="dtf :${listKomisi}"                                        
                                         th:value="${dtf.id}"
                                         th:text="${dtf.kmnam}">
@@ -110,7 +106,6 @@
                         <div class="form-group">
                             <label>Status Menikah</label>
                             <select class="form-control js-example-placeholder-single" th:field="*{statusNikah}" name="statusNikah">
-                                <option value=""></option>
                                 <option value="M">Menikah</option>
                                 <option value="J">Janda</option>
                                 <option value="D">Duda</option>
@@ -121,8 +116,7 @@
 
                         <div class="form-group">
                             <label>Baptis</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{statusBaptis}" name="statusBaptis">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusBaptis}" name="statusBaptis">                                
                                 <option value="S">Ya</option>
                                 <option value="B">Tidak</option>
                             </select>
@@ -130,8 +124,7 @@
 
                         <div class="form-group">
                             <label>Sidi</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{statusSidi}" name="statusSidi">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusSidi}" name="statusSidi">                                
                                 <option value="S">Ya</option>
                                 <option value="B">Tidak</option>
                             </select>
@@ -139,8 +132,7 @@
 
                         <div class="form-group">
                             <label>Pekerjaan</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{statusPekerjaan}" name="statusPekerjaan">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusPekerjaan}" name="statusPekerjaan">                                
                                 <option value="A">ASN/PNS</option>
                                 <option value="B">POLRI/TNI</option>
                                 <option value="C">PETANI</option>
@@ -153,8 +145,7 @@
 
                         <div class="form-group">
                             <label>Pendidikan</label>
-                            <select class="form-control js-example-placeholder-single" th:field="*{statusPendidikan}" name="statusPendidikan">
-                                <option value=""></option>
+                            <select class="form-control js-example-placeholder-single" th:field="*{statusPendidikan}" name="statusPendidikan">                                
                                 <option value="A">S3</option>
                                 <option value="B">S2</option>
                                 <option value="C">S1</option>

@@ -46,32 +46,34 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th class="noWrapColumn" width="50%">Nama Jemaat</th>
-                                    <th class="noWrapColumn">Tgl. Lahir</th>
-                                    <th class="noWrapColumn">Hubungan</th>
-                                    <th class="noWrapColumn">L/P</th>
-                                    <th class="noWrapColumn">Pendidikan</th>
-                                    <th class="noWrapColumn text-center">&nbsp;</th>
-                                </tr>
-                                <tr th:each="st,iter : ${jemaat.content}">
-                                    <td class="noWrapColumn" th:text="${st.jmnam}">Nama Jemaat</td>
-                                    <td class="noWrapColumn" th:text="${st.jmtgl}">Tgl. Lahir</td>
-                                    <td class="noWrapColumn" th:text="${st.jmhub}">Hubungan</td>
-                                    <td class="noWrapColumn" th:text="${st.jmjkl}">L/P</td>
-                                    <td class="noWrapColumn" th:text="${st.jmpdk}">Pendidikan</td>
-                                    <td class="noWrapColumn text-center">
-                                        <a href="#" class="btn btn-info" th:href="@{/keluarga/list}" title="Daftar Keluarga"><span class="glyphicon glyphicon-user"></span></a>
-                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/form(id=${st.id})}" title="edit Jemaat"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="#" class="btn btn-info" th:href="@{/jemaat/delete(id=${st.id})}" title="delete Jemaat"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div th:if="${not #lists.isEmpty(jemaat)}">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th class="noWrapColumn" width="50%">Nama Jemaat</th>
+                                        <th class="noWrapColumn">Tgl. Lahir</th>
+                                        <th class="noWrapColumn">Hubungan</th>
+                                        <th class="noWrapColumn">L/P</th>
+                                        <th class="noWrapColumn">Pendidikan</th>
+                                        <th class="noWrapColumn text-center">&nbsp;</th>
+                                    </tr>
+                                    <tr th:each="st : ${jemaat}">
+                                        <td class="noWrapColumn" th:text="${st.jmnam}">Nama Jemaat</td>
+                                        <td class="noWrapColumn" th:text="${st.jmtgl}">Tgl. Lahir</td>
+                                        <td class="noWrapColumn" th:text="${st.statusHubKk}">Hubungan</td>
+                                        <td class="noWrapColumn" th:text="${st.sjk}">L/P</td>
+                                        <td class="noWrapColumn" th:text="${st.statusPendidikan}">Pendidikan</td>
+                                        <td class="noWrapColumn text-center">
+                                            <a href="#" class="btn btn-info" th:href="@{/keluarga/list}" title="Daftar Keluarga"><span class="glyphicon glyphicon-user"></span></a>
+                                            <a href="#" class="btn btn-info" th:href="@{/jemaat/formAll(id=${st.id})}" title="edit Jemaat"><span class="glyphicon glyphicon-edit"></span></a>
+                                            <a href="#" class="btn btn-info" th:href="@{/jemaat/delete(id=${st.id})}" title="delete Jemaat"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>                            
                     </div>
-                    <div th:if="${not #lists.isEmpty(jemaat.content)}">
+                    <div th:if="${not #lists.isEmpty(jemaat)}">
                         <br/>
                         <div class="text-center"> 
                             <nav>
