@@ -5,6 +5,7 @@
  */
 package com.id.sigada.dao;
 
+import com.id.sigada.entities.RmKel;
 import com.id.sigada.entities.RpJmt;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface JemaatDao extends JpaRepository<RpJmt, String>{
-    List<RpJmt> findByKlkod(String klkod, Pageable pageable);
+    public List<RpJmt> findByKlkod(RmKel klkod, Pageable pageable);
     
     @Query("SELECT r FROM RpJmt r WHERE r.klkod = :klkod and r.jmnam = :jmnam")
     Page<RpJmt> findByJmnamContainingIgnoreCase2(@Param("klkod") String klkod,@Param("jmnam")  String jmnam, Pageable pageable);

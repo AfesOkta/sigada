@@ -13,6 +13,7 @@ import com.id.sigada.entities.RmKel;
 import com.id.sigada.entities.RpJmt;
 import com.id.sigada.util.GeneratorKode;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -48,12 +49,13 @@ public class JemaatController extends GeneratorKode{
 
         if (search != null) {
             m.addAttribute("search", search);
-            m.addAttribute("keluarga", dao.findByJmnamContainingIgnoreCase2(id, search, pageable));
+            m.addAttribute("jemaat", dao.findByJmnamContainingIgnoreCase2(id, search, pageable));
         } else {
             if (id != null) {
-                m.addAttribute("keluarga", dao.findByKlkod(id,pageable));
+                Optional<RmKel> rmKel = keluargaDao.findById(id);
+                m.addAttribute("jemaat", dao.findByKlkod(rmKel.get(),pageable));
             }else {
-                m.addAttribute("keluarga", dao.findAll(pageable));
+                m.addAttribute("jemaat", dao.findAll(pageable));
             }
         }
         return "jemaat/list";

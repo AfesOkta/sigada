@@ -10,5 +10,5 @@ package com.id.sigada.constants;
  * @author Afes
  */
 public enum StatusPendidikan {
-    A, B, C, D, E, F, G;
+    S3, S2, S1, DIPLOMA, SMA_SMK, SMP_SD, LAIN_LAIN;
 }

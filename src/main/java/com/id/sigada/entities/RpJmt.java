@@ -5,11 +5,20 @@
  */
 package com.id.sigada.entities;
 
+import com.id.sigada.constants.StatusBaptis;
+import com.id.sigada.constants.StatusHubKk;
+import com.id.sigada.constants.StatusJenisKelamin;
+import com.id.sigada.constants.StatusNikah;
+import com.id.sigada.constants.StatusPekerjaan;
+import com.id.sigada.constants.StatusPendidikan;
+import com.id.sigada.constants.StatusSidi;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -74,28 +83,27 @@ public class RpJmt implements Serializable {
     @Size(max = 5)
     @Column(name = "jmhut", length = 5)
     private String jmhut;
-    @Size(max = 255)
-    @Column(name = "jmbpt", length = 255)
-    private String jmbpt;
-    @Size(max = 255)
-    @Column(name = "jmsid", length = 255)
-    private String jmsid;
-    @Size(max = 255)
-    @Column(name = "jmnkh", length = 255)
-    private String jmnkh;
-    @Size(max = 255)
-    @Column(name = "jmkrj", length = 255)
-    private String jmkrj;
-    @Size(max = 255)
-    @Column(name = "jmpdk", length = 255)
-    private String jmpdk;
-    @Size(max = 255)
-    @Column(name = "jmhub", length = 255)
-    private String jmhub;
-    @Size(max = 255)
-    @Column(name = "jmjkl", length = 255)
-    private String jmjkl;
-
+    @Column(name = "jmbpt")
+    @Enumerated(EnumType.STRING)
+    StatusBaptis statusBaptis;
+    @Column(name = "jmsid")
+    @Enumerated(EnumType.STRING)
+    StatusSidi statusSidi;
+    @Column(name = "jmnkh")
+    @Enumerated(EnumType.STRING)
+    StatusNikah statusNikah;
+    @Column(name = "jmkrj")
+    @Enumerated(EnumType.STRING)
+    StatusPekerjaan statusPekerjaan;
+    @Column(name = "jmpdk")
+    @Enumerated(EnumType.STRING)
+    StatusPendidikan statusPendidikan;
+    @Column(name = "jmhub")
+    @Enumerated(EnumType.STRING)
+    StatusHubKk statusHubKk;
+    @Column(name = "jmjkl")
+    @Enumerated(EnumType.STRING)
+    StatusJenisKelamin sjk;
     
     
     @NotNull
@@ -117,136 +125,6 @@ public class RpJmt implements Serializable {
     @Getter @Setter    
     private RmKms kmkod;    
     
-    public RpJmt(){}
-    
-    public RpJmt(String id) {
-        this.id = id;
-    }
-
-    public RpJmt(String id, String jmkod) {
-        this.id = id;
-        this.jmkod = jmkod;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getJmkod() {
-        return jmkod;
-    }
-
-    public void setJmkod(String jmkod) {
-        this.jmkod = jmkod;
-    }
-
-    public String getJmnam() {
-        return jmnam;
-    }
-
-    public void setJmnam(String jmnam) {
-        this.jmnam = jmnam;
-    }
-
-    public Date getJmtgl() {
-        return jmtgl;
-    }
-
-    public void setJmtgl(Date jmtgl) {
-        this.jmtgl = jmtgl;
-    }
-
-    public String getJmhut() {
-        return jmhut;
-    }
-
-    public void setJmhut(String jmhut) {
-        this.jmhut = jmhut;
-    }
-
-    public String getJmbpt() {
-        return jmbpt;
-    }
-
-    public void setJmbpt(String jmbpt) {
-        this.jmbpt = jmbpt;
-    }
-
-    public String getJmsid() {
-        return jmsid;
-    }
-
-    public void setJmsid(String jmsid) {
-        this.jmsid = jmsid;
-    }
-
-    public String getJmnkh() {
-        return jmnkh;
-    }
-
-    public void setJmnkh(String jmnkh) {
-        this.jmnkh = jmnkh;
-    }
-
-    public String getJmkrj() {
-        return jmkrj;
-    }
-
-    public void setJmkrj(String jmkrj) {
-        this.jmkrj = jmkrj;
-    }
-
-    public String getJmpdk() {
-        return jmpdk;
-    }
-
-    public void setJmpdk(String jmpdk) {
-        this.jmpdk = jmpdk;
-    }
-
-    public String getJmhub() {
-        return jmhub;
-    }
-
-    public void setJmhub(String jmhub) {
-        this.jmhub = jmhub;
-    }
-
-    public String getJmjkl() {
-        return jmjkl;
-    }
-
-    public void setJmjkl(String jmjkl) {
-        this.jmjkl = jmjkl;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RpJmt)) {
-            return false;
-        }
-        RpJmt other = (RpJmt) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.id.sigada.entities.RpJmt[ id=" + id + " ]";
-    }
+  
     
 }

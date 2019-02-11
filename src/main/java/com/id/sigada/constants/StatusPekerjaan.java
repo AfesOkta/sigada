@@ -10,5 +10,5 @@ package com.id.sigada.constants;
  * @author Afes
  */
 public enum StatusPekerjaan {
-    A, B, C, D, E, F, G;
+    ASN_PNS, POLRI, PETANI, NELAYAN, KRYSWASTA, WIRASWASTA, LAIN_LAIN;
 }
