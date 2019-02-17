@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jemaat" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="897be688-a391-4b53-a6af-3dfe1a730570">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="jemaat" uuid="c8704dce-acb6-489b-b546-863bfbbe3631">
+		<field name="nama_jemaat" class="java.lang.String"/>
+		<field name="tglLahir" class="java.lang.String"/>
+		<field name="hub" class="java.lang.String"/>
+		<field name="kepel" class="java.lang.String"/>
+		<field name="komisi" class="java.lang.String"/>
+		<field name="keluarga" class="java.lang.String"/>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="802" height="46" uuid="f17ded02-1d07-4782-a30e-ce495a0b38a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="802" height="125" uuid="e38e210f-0772-4d8b-b94f-c1e8fffcd42f"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="jemaat" uuid="48e757a3-7fd4-4627-80c3-020dc1032e65">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="180" uuid="d3e97522-b31f-4f33-9ddd-28af2742e46c">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="180" height="30" backcolor="#CCCCCC" uuid="bff1e18b-5495-4e19-ab4a-8f63a9c2bc71"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[NAMA JEMAAT]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="180" height="20" uuid="984bbab1-526a-462e-b4a7-a4333f1e3af8"/>
+								<textFieldExpression><![CDATA[$F{nama_jemaat}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9e44b815-c3f7-4573-aeea-4d453d9590c8">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" backcolor="#CCCCCC" uuid="d6915273-33c5-4109-9bf1-40f8baedb4aa"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[TGL. LAHIR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="7f94be9c-7074-4d6a-a2a9-7cb6adc04a40"/>
+								<textFieldExpression><![CDATA[$F{tglLahir}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="123" uuid="6eace047-816f-4d54-8e6b-24ddfe724ada">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="123" height="30" backcolor="#CCCCCC" uuid="06749de9-49da-4a2d-97a4-514be9bdac23"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[HUB]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="123" height="20" uuid="a887f799-aacf-4532-91e9-f58f9c5e2a24"/>
+								<textFieldExpression><![CDATA[$F{hub}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="ebcce565-bfe7-49f4-8910-b2fbaab0ad2d">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" backcolor="#CCCCCC" uuid="d9433338-3b68-4952-ac0d-fba989bd4688"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[KEPEL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="20" uuid="0d41959f-a4fd-4510-8745-df76349d7989"/>
+								<textFieldExpression><![CDATA[$F{kepel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="127" uuid="42f10565-a65c-4614-83bc-da81ef988ec2">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="127" height="30" backcolor="#CCCCCC" uuid="3dbc8b3f-c716-49f8-b8d6-2c832887bf46"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[KOMISI]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="127" height="20" uuid="b208e1dd-c69b-48c0-9ee9-f4d3c44cf96f"/>
+								<textFieldExpression><![CDATA[$F{komisi}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="161" uuid="3cb9aec8-856f-4734-8f44-426edee6cbc4">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="161" height="30" backcolor="#CCCCCC" uuid="9b5c5e61-545e-47e6-be36-0ef55ea6716b"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[KELUARGA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="161" height="20" uuid="e1e12629-6141-4d6e-9b8c-0a4975985c25"/>
+								<textFieldExpression><![CDATA[$F{keluarga}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

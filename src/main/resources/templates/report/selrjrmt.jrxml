@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="selrjrmt" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c3caa07-1c64-4ce0-8b51-702388eeacb1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Dataset1" uuid="3a67d35a-d7de-4c58-8845-12449903b583">
+		<queryString>
+			<![CDATA[Select * from vjemaat]]>
+		</queryString>
+		<field name="kode" class="java.lang.String"/>
+		<field name="nama" class="java.lang.String"/>
+		<field name="jmtgl" class="java.lang.String"/>
+		<field name="jmhut" class="java.lang.String"/>
+		<field name="baptis" class="java.lang.String"/>
+		<field name="sidi" class="java.lang.String"/>
+		<field name="status_pernikahan" class="java.lang.String"/>
+		<field name="status_pekerjaan" class="java.lang.String"/>
+		<field name="status_pendidikan" class="java.lang.String"/>
+		<field name="status_hub_kk" class="java.lang.String"/>
+		<field name="status_jns_kelamin" class="java.lang.String"/>
+		<field name="kmkod" class="java.lang.String"/>
+		<field name="kmnam" class="java.lang.String"/>
+		<field name="klkod" class="java.lang.String"/>
+		<field name="klnam" class="java.lang.String"/>
+		<field name="klkkk" class="java.lang.String"/>
+		<field name="kpkod" class="java.lang.String"/>
+		<field name="kpnam" class="java.lang.String"/>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
